@@ -115,5 +115,66 @@ On peut affiner la gestion des erreurs avec les fonctions :
 `json_last_error_msg` retourne le message d'erreur lors de l'appel des fonctions
  - `json_encode()`
  - `json_decode()`    
-##### 1-
+##### 1- Analyse du ficher json-php.php
+Avec la commande dump, sans option : 
+```
+object(stdClass)[1]
+  public 'nom' => string 'IUT Annecy' (length=10)
+  public 'adresse' => string '9 rue Arc-en-ciel' (length=17)
+  public 'ville' => string 'Annecy-le-Vieux' (length=15)
+  public 'cp' => int 74940
+```
+Idem avec la commande print récursif (print_r), sans option : 
+```
+stdClass Object
+(
+ [nom] => IUT Annecy
+ [adresse] => 9 rue Arc-en-ciel
+ [ville] => Annecy-le-Vieux
+ [cp] => 74940
+)
+```
+Avec la commande dump, AVEC option true (array) : 
+```
+array (size=4)
+  'nom' => string 'IUT Annecy' (length=10)
+  'adresse' => string '9 rue Arc-en-ciel' (length=17)
+  'ville' => string 'Annecy-le-Vieux' (length=15)
+  'cp' => int 74940
+``` 
+Idem avec la commande print récursif (print_r), AVEC option true :
+``` 
+Array
+(
+  [nom] => IUT Annecy
+  [adresse] => 9 rue Arc-en-ciel
+  [ville] => Annecy-le-Vieux
+  [cp] => 74940
+)
+```
+##### 2- Gérer les erreurs mal formaté
+On va créer une variable mal formaté
+`$text2 = '{"nom":"IUT Annecy",adresse":"9 rue Arc-en-ciel","ville":"Annecy-le-Vieux","cp":74940}'; `
+On peut tester l'affichage des erreurs avec `print_r` et `var_dump`
+```
+print("<hr/><br/> Avec erreur, commande dump");
+var_dump(json_decode($text2, true));
+print("<br/> Idem avec la commande print récursif (print_r) ");
+print("<pre>");
+print_r(json_decode($text2,true));
+print("</pre>");
+```
+On s'appercoit que l'affichage d'erreur ce fait que avec la commande `dump` et affiche `NULL`
 
+##### 3- Analyser la partie encodage
+Dans le tableau 
+```
+$arr = array('a' => 1, 'b' => 2, 'c' => 3, 'd' => 4, 'e' => 5);
+$montext= json_encode($arr);
+echo $montext;
+print("<br/>");
+```
+Cela affiche: `{"a":1,"b":2,"c":3,"d":4,"e":5}`
+Pour ajouter la valeur f=> 6 
+`$arr += [ "f" => 6 ];`
+résulat : `{"a":1,"b":2,"c":3,"d":4,"e":5,"f":6}`
