@@ -200,4 +200,55 @@ j'ajoute les lignes :
 `$p->firstname ="Ronan";`
 #### Exercice 3 Création d'une API
 ##### 1- Analyser du code
+##### 2- Modifier le code
+![image](https://github.com/ronanfrnv/PHP/assets/65066876/309eb990-2d0c-441e-9d4d-bfbd47c6c0b5)
+
+Solution numéro 1
+```
+<?php
+if (isset($_GET['complet'])){
+	$jour=getdate();
+	print("{\"jour:\"".$jour["weekday"].",\"mois\":".$jour["month"].",\"année:\"".$jour["year"].",\"heure:\"".$jour["hours"].",\"minutes:\"".$jour["minutes"].",\"secondes:\"".$jour["seconds"]."}");
+}elseif (isset($_GET['date'])){
+	$jour=getdate();
+	print("le jour est ".$jour["weekday"]);
+	print("{\"jour:\"".$jour["weekday"].",\"mois\":".$jour["month"].",\"année:\"".$jour["year"]."}");
+}elseif (isset($_GET['heure'])){
+	$jour=getdate();	
+	print("{\"heure:\"".$jour["hours"].",\"minutes:\"".$jour["minutes"].",\"secondes:\"".$jour["seconds"]."}");
+}else{
+	print("{\"erreur\" :\"opion non connue\"}");
+}
+?>
+```
+Solution numéro 2 
+```
+<?php
+$jour=getdate();
+$format = $_GET['format'];
+switch($format){
+    case $format == 'complet':
+        $complet = array('jour' => $jour["weekday"], 'mois' => $jour["month"], 'annee' => $jour["year"], 'heure' => $jour["hours"], 'minute' => $jour["minutes"], 'seconde' => $jour["seconds"]);
+        $complet_json= json_encode($complet);
+        echo $complet_json;
+        break;
+    case $format == 'date':
+        $date = array('jour' => $jour["weekday"], 'mois' => $jour["month"], 'annee' => $jour["year"]);
+        $date_json= json_encode($date);
+        echo $date_json;
+        break;
+    case $format == 'heure':
+        $heure = array('heure' => $jour["hours"], 'minute' => $jour["minutes"], 'seconde' => $jour["seconds"]);
+        $heure_json= json_encode($heure);
+        echo $heure_json;
+        break;
+    default:
+        $nonprevu = array('erreur' => 'option non connue');
+        $nonprevus_json= json_encode($nonprevu);
+        echo $nonprevus_json;
+        break;
+}
+?>
+```
+
 
