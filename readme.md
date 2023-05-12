@@ -251,6 +251,9 @@ switch($format){
 ?>
 ```
 #### Exercice 4 webstorage / indexedDB (base de données No sql)
+Sur la page Webstorage.php 
+##### 1-
+##### 2-Je crée un formulaire demandant un nom et lorsque j'appuie sur le boutton valider cela l'ajoute dans le local storage
 ```
 <!DOCTYPE html>
 <html>
@@ -278,3 +281,33 @@ switch($format){
 	</body>
 </html>
 ```
+##### 3-Je crée un fichier echowebstorage.php qui affiche la valeur de la clé prenom en alerte et dans la console
+```
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+	</head>
+	<body>
+        <label>Prénom</label>
+		<input type="text" placeholder="Entrez le prénom" id="prenom">
+		<button type="button" onclick="getPrenom();">Valider</button>
+		
+		<script>
+			function getPrenom() {
+                var input = document.getElementById("prenom").value;
+                alert(input); //affiche la valeur récupérer
+                
+                 // Enregistre la valeur de l'input à la clé prenom
+                sessionStorage.setItem('prenom', input);
+
+                let data = sessionStorage.getItem('prenom');
+                alert("Voici la valeur pour la clé prénom "+data);
+            }
+
+        </script>
+	</body>
+</html>
+```
+
+
