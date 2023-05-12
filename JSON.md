@@ -1,5 +1,5 @@
 # Json,Webstorage, API et indexedDB
-#### Exercice 1
+#### Exercice 1 JSON en Javascript
 ##### 1- Tester sur http://www.jsoneditoronline.org/ le texte suivant
 ```
 {"nom":"IUT Annecy","adresse":"9 rue Arc-en-ciel","ville":"Annecy-le-Vieux","cp":74940}
@@ -104,5 +104,16 @@ alert(texte4);
 ```
 Cela correspond bien au résultat attendu
 
-#### Exercice 2
- 
+#### Exercice 2 JSON en php
+On peut facilement passer du format JSON au format tableau ou objet php par 2 métohdes  
+```json_decode()``` permet de transformer un texte JSON utf8 en objet ou tableau document [VOIR DOC ICI](https://www.php.net/manual/fr/function.json-decode.php).
+Et retourne ```NULL``` si problème  
+```json_encode()``` permet de retourner du JSON par rapport à des valeurs PHP
+Et retourne ```false``` si problème  
+On peut affiner la gestion des erreurs avec les fonctions : 
+`json_last_error` retourne la dernière erreur JSON  
+`json_last_error_msg` retourne le message d'erreur lors de l'appel des fonctions
+ - `json_encode()`
+ - `json_decode()`    
+##### 1-
+
