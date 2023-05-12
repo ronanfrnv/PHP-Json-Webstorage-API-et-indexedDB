@@ -174,7 +174,7 @@ $montext= json_encode($arr);
 echo $montext;
 print("<br/>");
 ```
-Cela affiche: `{"a":1,"b":2,"c":3,"d":4,"e":5}`
+Cela affiche: ```{"a":1,"b":2,"c":3,"d":4,"e":5}```
 Pour ajouter la valeur f=> 6 
 `$arr += [ "f" => 6 ];`
-résulat : `{"a":1,"b":2,"c":3,"d":4,"e":5,"f":6}`
+résulat : ```{"a":1,"b":2,"c":3,"d":4,"e":5,"f":6}```
