@@ -271,15 +271,16 @@ Sur la page Webstorage.php
                 alert(input); //affiche la valeur récupérer
                 
                  // Enregistre la valeur de l'input à la clé prenom
-                sessionStorage.setItem('prenom', input);
+                 localStorage.setItem('prenom', input);
 
-                let data = sessionStorage.getItem('prenom');
+                let data = localStorage.getItem('prenom');
                 alert("Voici la valeur pour la clé prénom "+data);
             }
 
         </script>
 	</body>
 </html>
+
 ```
 ##### 3-Je crée un fichier echowebstorage.php qui affiche la valeur de la clé prenom en alerte et dans la console
 ```
@@ -289,25 +290,41 @@ Sur la page Webstorage.php
 		<meta charset="utf-8">
 	</head>
 	<body>
-        <label>Prénom</label>
-		<input type="text" placeholder="Entrez le prénom" id="prenom">
-		<button type="button" onclick="getPrenom();">Valider</button>
+        <p id="balisep"></p>
 		
 		<script>
-			function getPrenom() {
-                var input = document.getElementById("prenom").value;
-                alert(input); //affiche la valeur récupérer
+                let data = localStorage.getItem('prenom');
                 
-                 // Enregistre la valeur de l'input à la clé prenom
-                sessionStorage.setItem('prenom', input);
+                document.getElementById("balisep").innerHTML = data;
+        </script>
+	</body>
+</html>
 
-                let data = sessionStorage.getItem('prenom');
-                alert("Voici la valeur pour la clé prénom "+data);
-            }
+```
+
+##### 4-  Créer une autre page echostorage.html qui affiche le prénom sur changement (event) du localStorage.
+
+```
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+	</head>
+	<body>
+        <p id="balisep"></p>
+		
+		<script>              	
+                window.addEventListener('storage', function(event) {
+                    if (event.key === 'prenom') {
+                    console.log('The value of myItem has changed to: ' + event.newValue)
+                    document.getElementById("balisep").innerHTML = event.newValue
+                }
+                });
 
         </script>
 	</body>
 </html>
+
 ```
 
 
