@@ -167,6 +167,7 @@ print("</pre>");
 On s'appercoit que l'affichage d'erreur ce fait que avec la commande `dump` et affiche `NULL`
 
 ##### 3- Analyser la partie encodage
+a.   
 Dans le tableau 
 ```
 $arr = array('a' => 1, 'b' => 2, 'c' => 3, 'd' => 4, 'e' => 5);
@@ -174,7 +175,28 @@ $montext= json_encode($arr);
 echo $montext;
 print("<br/>");
 ```
-Cela affiche: ```{"a":1,"b":2,"c":3,"d":4,"e":5}```
-Pour ajouter la valeur f=> 6 
-`$arr += [ "f" => 6 ];`
-résulat : ```{"a":1,"b":2,"c":3,"d":4,"e":5,"f":6}```
+Cela affiche: ```{"a":1,"b":2,"c":3,"d":4,"e":5}```  
+Pour ajouter la valeur f=> 6   
+`$arr += [ "f" => 6 ];`  
+résulat : ```{"a":1,"b":2,"c":3,"d":4,"e":5,"f":6}```  
+b.  
+Dans le code ci-dessous
+```
+class Personne {
+ public $name = "";
+ public $hobbies  = "";
+ public $birthdate = "";
+}
+$p = new Personne();
+$p->name = "sachin";
+$p->hobbies  = "sports";
+$p->birthdate = "1-1-2000";
+$textp2=json_encode($p);
+echo $textp2;
+```
+Pour ajouter l'attribue `firstname` 
+j'ajoute les lignes :
+`public $firstname = "";`
+`$p->firstname ="Ronan";`
+#### Exercice 3 Création d'une API
+##### 1- Analyser du code
